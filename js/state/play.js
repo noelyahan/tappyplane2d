@@ -56,7 +56,11 @@ window.Tplane.state.play = {
 	},
 	
 	create: function(){
-		bestScore = localStorage.getItem("score") == null ? 0 : localStorage.getItem("score");
+		try {
+			bestScore = localStorage.getItem("score") == null ? 0 : localStorage.getItem("score");
+		} catch (e) {
+			// localStorage is not availble or accessible
+		}
 		
 		// add bacground and scale and make it fit to the screen
 		this.bg = game.add.tileSprite(0, 0, 600, 800, "/background.png");
